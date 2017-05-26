@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
             //get data from the view that was clicked...
             String data = parent.getItemAtPosition(position).toString();
             //for now just show a Toast.. but really we could do anything we want with the data...
-            //TODO: as an exercise
+            Toast.makeText(view.getContext(), "You clicked "+ data+ " YUM!", Toast.LENGTH_SHORT).show();
+
         }
     };
 
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         //we need to link the ArrayAdpater with our ListView
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
+        //connect the listview to use the listener or handler that we created as a private, inner class
+        listView.setOnItemClickListener(myListItemClickHandler);
     }
 }
 
